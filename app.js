@@ -18,6 +18,7 @@ app.use(passport.initialize());
 require('./middleware/passport')(passport);
 
 app.use(require('morgan')('dev'));//смотреть что происходит с сервером в данный момент
+app.use('/uploads', express.static('uploads'))
 app.use(bodyPaarser.urlencoded({extended: true}));
 app.use(bodyPaarser.json());
 app.use(require('cors')()); //можно обрабатывать корс запросы, то есть если пользователь будет находиться на другом домене мы сможет отвечать ему сервером

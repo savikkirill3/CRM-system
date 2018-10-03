@@ -2,15 +2,27 @@ const mongoose = require('mongoose') //для создания моделей
 const Schema = mongoose.Schema //схема которая будет описывать модель
 
 const  orderSchema = new Schema({
-    email: {
-        type: String,
-        required: true,
-        unique: true
+    date: {
+        type: Date,
+        default: Date.now
     },
-    password: {
-        type: String,
+    order: {
+        type: Number,
         required: true
     },
+    list: [
+        {
+            name: {
+                type: String
+            },
+            quantity: {
+                type: Number
+            },
+            cost: {
+                type: Number
+            }
+        }
+    ],
     user: {
         ref: 'users',
         type: Schema.Types.ObjectId

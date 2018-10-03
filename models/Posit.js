@@ -2,27 +2,18 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const positionSchema = new Schema({
-    date: {
-        type: Date,
-        default: Date.now
+    name: {
+        type: String,
+        required: true
     },
-    order: {
+    cost: {
         type: Number,
         required: true
     },
-    list: [
-        {
-            name: {
-                type: String
-            },
-            quantity: {
-                type: Number
-            },
-            cost: {
-                type: Number
-            }
-        }
-    ],
+    category: {
+      ref: 'categories',
+      type: Schema.Types.ObjectId
+    },
     user: {
         ref: 'users',
         type: Schema.Types.ObjectId
