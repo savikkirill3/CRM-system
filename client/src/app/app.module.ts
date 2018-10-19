@@ -10,8 +10,11 @@ import {AuthLayoutComponent} from './shared/layouts/auth-layout/auth-layout.comp
 import {SiteLayoutComponent} from './shared/layouts/site-layout/site-layout.component';
 import {RegisterPageComponent} from './register-page/register-page.component';
 import {TokenInterceptor} from "./shared/classes/token.interceptor";
-import { OverviewPageComponent } from './overview-page/overview-page.component';
-
+import {OverviewPageComponent} from './overview-page/overview-page.component';
+import {AnalyticsPageComponent} from './analytics-page/analytics-page.component';
+import {HistoryPageComponent} from './history-page/history-page.component';
+import {OrderPageComponent} from './order-page/order-page.component';
+import {CategoriesPageComponent} from './categories-page/categories-page.component';
 
 
 @NgModule({
@@ -21,7 +24,11 @@ import { OverviewPageComponent } from './overview-page/overview-page.component';
     AuthLayoutComponent,
     SiteLayoutComponent,
     RegisterPageComponent,
-    OverviewPageComponent
+    OverviewPageComponent,
+    AnalyticsPageComponent,
+    HistoryPageComponent,
+    OrderPageComponent,
+    CategoriesPageComponent
   ],
   imports: [
     BrowserModule,
