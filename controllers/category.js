@@ -1,5 +1,5 @@
 const Category = require('../models/Category')
-const position = require('../models/Posit')
+const Position = require('../models/Posit')
 const errorHandler = require('../utils/errorHandler')
 
 module.exports.getAll = async function (req, res) {
