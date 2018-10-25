@@ -4,8 +4,8 @@ const errorHandler = require('../utils/errorHandler')
 
 module.exports.overview = async function (req, res) {
   try {
-    const allOrders = await Order.find({user: req.user.id}).sort(1)
-    const  ordersMap = getOrdersMap(allOrders)
+    const allOrders = await Order.find({user: req.user.id}).sort({date: 1})
+    const ordersMap = getOrdersMap(allOrders)
     const yesterdayOrders = ordersMap[moment().add(-1, 'd').format('DD.MM.YYYY')] || []
 
     //Кол-во заказов вчера
@@ -15,7 +15,7 @@ module.exports.overview = async function (req, res) {
     //Количество дней всего
     const daysNumber = Object.keys(ordersMap).length
     //Заказов в день
-    const ordersPerDay = (totalOrdersNumber / daysNumber).toFixed(2)
+    const ordersPerDay = (totalOrdersNumber / daysNumber).toFixed(0)
     //((заказов вчера / кол-во заказов в день)-1)*100
     //Процент для кол-ва заказов
     const ordersPercent = ((yesterdayOrdersNumber / ordersPerDay) - 1) * 100
@@ -32,7 +32,7 @@ module.exports.overview = async function (req, res) {
     //Сравнение кол-ва заказов
     const compareNumber = (yesterdayOrdersNumber - ordersPerDay).toFixed(2)
 
-    res.status(200),json({
+    res.status(200).json({
       gain: {
         percent: Math.abs(+gainPercent),
         compare: Math.abs(+compareGain),
